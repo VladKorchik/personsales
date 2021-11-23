@@ -4,7 +4,6 @@ create table PersonsSales.person
 (
     phone_number int primary key ,
     password varchar (50) not null,
-    user_role varchar (50) not null default 'DEFAULT',
     first_name varchar (100),
     last_name varchar (100),
     user_raiting varchar (50) not null ,
