@@ -51,6 +51,7 @@ public class Role implements GrantedAuthority {
         this.users = users;
     }
 
+//    Имя роли должно соответствовать шаблону: «ROLE_ИМЯ»
     @Override
     public String getAuthority() {
         return getName();

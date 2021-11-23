@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table ( name = "personssales.person")
+@Table ( name = "person")
 public class PersonSeller implements CanBeASeller, UserDetails {
     @Id
     @Column(name = "phone_number")

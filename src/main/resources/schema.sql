@@ -1,4 +1,5 @@
-create schema PersonsSales;
+-- create schema before starting app
+create schema personsales;
 
 create table PersonsSales.person
 (
