@@ -1,6 +1,6 @@
 package com.senla.kaluga.PersonsSales.model.product;
 
-public enum OrderRating {
+public enum AdvertRating {
     THELOWEST,
     BELOWTHEAVERAGE,
     DEFAULT,

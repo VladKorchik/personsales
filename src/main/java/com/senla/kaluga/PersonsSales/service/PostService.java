@@ -1,12 +1,12 @@
 package com.senla.kaluga.PersonsSales.service;
 
-import com.senla.kaluga.PersonsSales.repository.ComentsRepository;
-import com.senla.kaluga.PersonsSales.repository.MessageRepository;
-import com.senla.kaluga.PersonsSales.repository.PersonRepository;
-import com.senla.kaluga.PersonsSales.repository.ProductRepository;
+import com.senla.kaluga.PersonsSales.repository.commentsRepository.CommentsRepository;
+import com.senla.kaluga.PersonsSales.repository.messageRepository.MessageRepository;
+import com.senla.kaluga.PersonsSales.repository.personRepository.PersonRepository;
+import com.senla.kaluga.PersonsSales.repository.productRepository.ProductRepository;
 
 public class PostService {
-    private ComentsRepository comentsRepository;
+    private CommentsRepository commentsRepository;
     private MessageRepository messageRepository;
     private PersonRepository personRepository;
     private ProductRepository productReposit;

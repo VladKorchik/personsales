@@ -1,22 +1,24 @@
 package com.senla.kaluga.PersonsSales.model.user;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-@Table(name = "t_role")
 public class Role implements GrantedAuthority {
     @Id
     private Long id;
     private String name;
     @Transient
-    @ManyToMany(mappedBy = "roles")
-    private Set<CanBeASeller> users;
-
-    public Role() {
-    }
+    @ManyToMany
+    private Set<Seller> personSellers;
 
     public Role(Long id) {
         this.id = id;
@@ -25,30 +27,6 @@ public class Role implements GrantedAuthority {
     public Role(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<CanBeASeller> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<CanBeASeller> users) {
-        this.users = users;
     }
 
 //    Имя роли должно соответствовать шаблону: «ROLE_ИМЯ»

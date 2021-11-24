@@ -1,44 +1,44 @@
 package com.senla.kaluga.PersonsSales.model.user;
 
+import com.senla.kaluga.PersonsSales.model.message.Message;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
-@Table ( name = "person")
-public class PersonSeller implements CanBeASeller, UserDetails {
+public class PersonSeller implements Seller, UserDetails {
     @Id
-    @Column(name = "phone_number")
+    @Column(unique = true)
     private int phoneNumber;
-    @Column(name = "password")
     private String password;
     @Transient
     private String passwordConfirm;
-    @Column(name = "first_name")
     @Size(min = 2, message = "Имя должно состоять минимум из вух символов.")
     private String firstName;
-    @Column(name = "last_name")
     @Size(min = 2, message = "Фамилия должна состоять минимум из вух символов.")
     private String lastName;
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_raiting")
     private UserRating userRating;
     private String email;
-    @Column(name = "registration_date")
-    private String registrationDate;
+    @CreationTimestamp
+    private Timestamp registrationDate;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
-
-    public PersonSeller() {}
+    @OneToMany
+    private Set<Message> messageToPersonSet;
 
     @Override
     public int hashCode() {
@@ -64,6 +64,7 @@ public class PersonSeller implements CanBeASeller, UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
@@ -79,24 +80,12 @@ public class PersonSeller implements CanBeASeller, UserDetails {
         return null;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
 }

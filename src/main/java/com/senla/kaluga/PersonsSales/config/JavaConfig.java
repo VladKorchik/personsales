@@ -1,15 +1,14 @@
 package com.senla.kaluga.PersonsSales.config;
 
-import com.senla.kaluga.PersonsSales.repository.ComentsRepository;
-import com.senla.kaluga.PersonsSales.repository.MessageRepository;
-import com.senla.kaluga.PersonsSales.repository.PersonRepository;
-import com.senla.kaluga.PersonsSales.repository.ProductRepository;
+import com.senla.kaluga.PersonsSales.repository.commentsRepository.CommentsRepository;
+import com.senla.kaluga.PersonsSales.repository.messageRepository.MessageRepository;
+import com.senla.kaluga.PersonsSales.repository.personRepository.PersonRepository;
+import com.senla.kaluga.PersonsSales.repository.productRepository.ProductRepository;
 import com.senla.kaluga.PersonsSales.service.DeleteService;
 import com.senla.kaluga.PersonsSales.service.GetService;
 import com.senla.kaluga.PersonsSales.service.PostService;
 import com.senla.kaluga.PersonsSales.service.PutService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -20,8 +19,8 @@ public class JavaConfig {
         //todo resolve annotaion: singleton or not
 
     @Autowired
-    public ComentsRepository comentsRepository(){
-        return new ComentsRepository();
+    public CommentsRepository comentsRepository(){
+        return new CommentsRepository();
     }
     @Autowired
     public MessageRepository messageRepository(){

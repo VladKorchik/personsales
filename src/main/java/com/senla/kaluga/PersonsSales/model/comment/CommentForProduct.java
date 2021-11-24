@@ -1,5 +1,6 @@
-package com.senla.kaluga.PersonsSales.model.message;
+package com.senla.kaluga.PersonsSales.model.comment;
 
+import com.senla.kaluga.PersonsSales.model.product.Advert;
 import com.senla.kaluga.PersonsSales.model.user.PersonSeller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,17 +15,19 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Message {
+public class CommentForProduct {
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
+    @ManyToOne
+    private Advert productId;
     @CreationTimestamp
     private Timestamp date;
     @ManyToOne
-    private PersonSeller sender;
-    @ManyToOne
-    private PersonSeller reciever;
-    @Size(max = 5000)
+    private PersonSeller author;
+    @Size(max = 1000)
     private String text;
+    @Size(max = 1000)
+    private String answerFromSeller;
 
 }
