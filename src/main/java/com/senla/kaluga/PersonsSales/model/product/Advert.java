@@ -1,6 +1,6 @@
 package com.senla.kaluga.PersonsSales.model.product;
 
-import com.senla.kaluga.PersonsSales.model.comment.CommentForProduct;
+import com.senla.kaluga.PersonsSales.model.comment.CommentForAdvert;
 import com.senla.kaluga.PersonsSales.model.user.PersonSeller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,7 +31,9 @@ public class Advert {
     private String description;
     @CreationTimestamp
     private Timestamp date;
-    private AdvertRating orderRating;
+    // todo
+    @Size (min = 0, max = 5, message = "рейтинг не может быть ")
+    private int advertRating;
     @OneToMany
-    private Set<CommentForProduct> commentForProductSet;
+    private Set<CommentForAdvert> commentForAdvertSet;
 }

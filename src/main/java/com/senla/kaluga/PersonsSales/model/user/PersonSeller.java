@@ -1,6 +1,7 @@
 package com.senla.kaluga.PersonsSales.model.user;
 
 import com.senla.kaluga.PersonsSales.model.message.Message;
+import com.senla.kaluga.PersonsSales.model.product.Advert;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 public class PersonSeller implements Seller, UserDetails {
+    private static int defaultRating = 3;
+
     @Id
     @Column(unique = true)
     private int phoneNumber;
@@ -30,8 +33,8 @@ public class PersonSeller implements Seller, UserDetails {
     private String firstName;
     @Size(min = 2, message = "Фамилия должна состоять минимум из вух символов.")
     private String lastName;
-    @Enumerated(EnumType.STRING)
-    private UserRating userRating;
+    @Size (min = 0, max = 5, message = "Рейтинг может быть от 0 до 5.")
+    private int userRating = defaultRating;
     private String email;
     @CreationTimestamp
     private Timestamp registrationDate;
@@ -39,6 +42,8 @@ public class PersonSeller implements Seller, UserDetails {
     private Set<Role> roles;
     @OneToMany
     private Set<Message> messageToPersonSet;
+    @OneToMany
+    private Set<Advert> personsAdverts;
 
     @Override
     public int hashCode() {

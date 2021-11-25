@@ -3,7 +3,7 @@ package com.senla.kaluga.PersonsSales.config;
 import com.senla.kaluga.PersonsSales.repository.commentsRepository.CommentsRepository;
 import com.senla.kaluga.PersonsSales.repository.messageRepository.MessageRepository;
 import com.senla.kaluga.PersonsSales.repository.personRepository.PersonRepository;
-import com.senla.kaluga.PersonsSales.repository.productRepository.ProductRepository;
+import com.senla.kaluga.PersonsSales.repository.advertRepository.AdvertRepository;
 import com.senla.kaluga.PersonsSales.service.DeleteService;
 import com.senla.kaluga.PersonsSales.service.GetService;
 import com.senla.kaluga.PersonsSales.service.PostService;
@@ -31,8 +31,8 @@ public class JavaConfig {
         return new PersonRepository();
     }
     @Autowired
-    public ProductRepository productRepository() {
-        return new ProductRepository();
+    public AdvertRepository productRepository() {
+        return new AdvertRepository();
     }
 
     @Autowired

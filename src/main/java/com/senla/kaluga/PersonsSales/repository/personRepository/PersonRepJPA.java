@@ -10,4 +10,6 @@ public interface PersonRepJPA extends JpaRepository<PersonSeller, String> {
     Optional<PersonSeller> findByPhoneNumber(int phoneNumber);
     Optional<PersonSeller> findByEmail (String email);
 
+    //todo изменить данные аккаунта
+
 }

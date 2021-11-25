@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @Entity
-public class CommentForProduct {
+public class CommentForAdvert {
     @Id
     @GeneratedValue
     private int id;
