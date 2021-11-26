@@ -10,4 +10,8 @@ public class PersonsSalesApplication {
 		SpringApplication.run(PersonsSalesApplication.class, args);
 	}
 
+	//todo Можно попробовать создать схему перед запуском приложения
+
+	//todo
+
 }

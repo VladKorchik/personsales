@@ -1,7 +1,7 @@
-package com.senla.kaluga.PersonsSales.model.product;
+package com.senla.kaluga.PersonsSales.model.advert;
 
 import com.senla.kaluga.PersonsSales.model.comment.CommentForAdvert;
-import com.senla.kaluga.PersonsSales.model.user.PersonSeller;
+import com.senla.kaluga.PersonsSales.model.seller.Seller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,23 +17,26 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 public class Advert {
+
+    //todo можно подумать над реализацией фоток товара
+
     @Id
     @GeneratedValue
     private Integer id;
     @Size(max = 100)
     private String name;
-    private int price;
+    private Long price;
     @ManyToOne
-    private PersonSeller author;
+    private Seller author;
     @Size(max = 150)
     private String category;
     @Size(max = 2000)
     private String description;
     @CreationTimestamp
     private Timestamp date;
-    // todo
-    @Size (min = 0, max = 5, message = "рейтинг не может быть ")
-    private int advertRating;
+    private Boolean isAdvertPremium;
+    private Boolean isAdvertActive;
     @OneToMany
     private Set<CommentForAdvert> commentForAdvertSet;
+
 }

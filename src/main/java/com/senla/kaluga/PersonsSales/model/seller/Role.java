@@ -1,4 +1,4 @@
-package com.senla.kaluga.PersonsSales.model.user;
+package com.senla.kaluga.PersonsSales.model.seller;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ public class Role implements GrantedAuthority {
     private String name;
     @Transient
     @ManyToMany
-    private Set<Seller> personSellers;
+    private Set<Seller> Sellers;
 
     public Role(Long id) {
         this.id = id;

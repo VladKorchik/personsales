@@ -1,7 +1,9 @@
-package com.senla.kaluga.PersonsSales.model.user;
+package com.senla.kaluga.PersonsSales.model.seller;
 
+import com.senla.kaluga.PersonsSales.model.chat.Chat;
+import com.senla.kaluga.PersonsSales.model.rating.Rating;
 import com.senla.kaluga.PersonsSales.model.message.Message;
-import com.senla.kaluga.PersonsSales.model.product.Advert;
+import com.senla.kaluga.PersonsSales.model.advert.Advert;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,30 +22,30 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-public class PersonSeller implements Seller, UserDetails {
-    private static int defaultRating = 3;
+public class Seller implements UserDetails {
 
     @Id
     @Column(unique = true)
-    private int phoneNumber;
+    private Long phoneNumber;
     private String password;
     @Transient
     private String passwordConfirm;
-    @Size(min = 2, message = "Имя должно состоять минимум из вух символов.")
+    @Size(min = 2, max = 100, message = "Имя должно состоять минимум из двух символов.")
     private String firstName;
-    @Size(min = 2, message = "Фамилия должна состоять минимум из вух символов.")
+    @Size(min = 2, max = 100, message = "Фамилия должна состоять минимум из двух символов.")
     private String lastName;
-    @Size (min = 0, max = 5, message = "Рейтинг может быть от 0 до 5.")
-    private int userRating = defaultRating;
+    @OneToMany
+    private Set<Rating> commentsAndRating;
     private String email;
     @CreationTimestamp
     private Timestamp registrationDate;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
-    @OneToMany
-    private Set<Message> messageToPersonSet;
+    @ManyToMany
+    private Set<Chat> chatSet;
     @OneToMany
     private Set<Advert> personsAdverts;
+
 
     @Override
     public int hashCode() {

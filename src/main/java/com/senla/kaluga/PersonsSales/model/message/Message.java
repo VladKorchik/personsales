@@ -1,6 +1,7 @@
 package com.senla.kaluga.PersonsSales.model.message;
 
-import com.senla.kaluga.PersonsSales.model.user.PersonSeller;
+import com.senla.kaluga.PersonsSales.model.chat.Chat;
+import com.senla.kaluga.PersonsSales.model.seller.Seller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,10 +22,12 @@ public class Message {
     @CreationTimestamp
     private Timestamp date;
     @ManyToOne
-    private PersonSeller sender;
+    private Seller sender;
     @ManyToOne
-    private PersonSeller reciever;
+    private Seller receiver;
     @Size(max = 5000)
     private String text;
+    @ManyToOne
+    private Chat chat;
 
 }

@@ -1,7 +1,7 @@
 package com.senla.kaluga.PersonsSales.model.comment;
 
-import com.senla.kaluga.PersonsSales.model.product.Advert;
-import com.senla.kaluga.PersonsSales.model.user.PersonSeller;
+import com.senla.kaluga.PersonsSales.model.advert.Advert;
+import com.senla.kaluga.PersonsSales.model.seller.Seller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +24,7 @@ public class CommentForAdvert {
     @CreationTimestamp
     private Timestamp date;
     @ManyToOne
-    private PersonSeller author;
+    private Seller author;
     @Size(max = 1000)
     private String text;
     @Size(max = 1000)
