@@ -23,16 +23,14 @@ public class AdvertRepository {
     // - потом с сортировкой по рейтингу
 
     public List<Advert> getAllActiveAdverts(){
-        return advertRepJPA.findByIsAdvertActive();
+        return advertRepJPA.findAdvertByIsAdvertActiveIsTrue();
     }
 
     public List<Advert> getMyOwnAdverts(Seller seller) {
         return advertRepJPA.findByAuthorOrderByDate(seller);
     }
 
-
-
-    public void updateAdvert(String id, String whatToChange, String newValue) {
+    public void updateAdvert(Integer id, String whatToChange, String newValue) {
         Advert advert = advertRepJPA.getById(id);
         switch (whatToChange) {
             case "name":
@@ -51,7 +49,7 @@ public class AdvertRepository {
         advertRepJPA.save(advert);
     }
 
-    public void makeAdvertPremium(String id) {
+    public void makeAdvertPremium(Integer id) {
         Advert advert = advertRepJPA.getById(id);
         if (advert.getIsAdvertPremium().equals(false)) {
             advert.setIsAdvertPremium(true);
@@ -61,7 +59,7 @@ public class AdvertRepository {
         advertRepJPA.save(advert);
     }
 
-    public void changeActivityStatus(String id) {
+    public void changeActivityStatus(Integer id) {
         Advert advert = advertRepJPA.getById(id);
         if (advert.getIsAdvertActive().equals(true)) {
             advert.setIsAdvertActive(false);
@@ -70,6 +68,5 @@ public class AdvertRepository {
         }
         advertRepJPA.save(advert);
     }
-
 
 }

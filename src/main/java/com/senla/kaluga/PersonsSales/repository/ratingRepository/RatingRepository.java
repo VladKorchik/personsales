@@ -1,13 +1,11 @@
 package com.senla.kaluga.PersonsSales.repository.ratingRepository;
 
-import com.senla.kaluga.PersonsSales.model.rating.Rating;
+import com.senla.kaluga.PersonsSales.model.sellerrating.SellerRating;
 import com.senla.kaluga.PersonsSales.model.seller.Seller;
-import com.senla.kaluga.PersonsSales.repository.sellerRepository.SellerRepJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RatingRepository {
@@ -19,10 +17,10 @@ public class RatingRepository {
     //todo Возвращаем средний рейтинг кого-либо
     //на сервисном слое сервис заберёт персону, а потом передаст её сюда
     public long getAverageRating(Seller seller) {
-        List<Rating> ratings = ratingRepJPA.findBySeller(seller);
+        List<SellerRating> ratings = ratingRepJPA.findBySeller(seller);
         int quantityOfMarks = 0;
         int allMarksSum = 0;
-        for (Rating rating : ratings) {
+        for (SellerRating rating : ratings) {
             allMarksSum = +rating.getMark();
             quantityOfMarks++;
         }
@@ -31,13 +29,13 @@ public class RatingRepository {
     }
 
     //todo новая оценка создаётся на сервисном уровне и передаётся сюда
-    public void addMark (Rating rating){
+    public void addMark (SellerRating rating){
         ratingRepJPA.save(rating);
     }
 
     //todo Возвращаем все отзывы
-    public List<Rating> getAllMarks(Seller seller){
-        List<Rating> ratings = ratingRepJPA.findBySeller(seller);
+    public List<SellerRating> getAllMarks(Seller seller){
+        List<SellerRating> ratings = ratingRepJPA.findBySeller(seller);
         return ratings;
     }
 

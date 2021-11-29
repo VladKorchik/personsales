@@ -2,10 +2,9 @@ package com.senla.kaluga.PersonsSales.model.advert;
 
 import com.senla.kaluga.PersonsSales.model.comment.CommentForAdvert;
 import com.senla.kaluga.PersonsSales.model.seller.Seller;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -15,6 +14,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 public class Advert {
 
@@ -34,7 +34,9 @@ public class Advert {
     private String description;
     @CreationTimestamp
     private Timestamp date;
+    // Тут надо что-то сделать, чтобы по умолчанию объявление было неактивным
     private Boolean isAdvertPremium;
+    //тут надо что-то сделать, чтобы после создания объявление было активно
     private Boolean isAdvertActive;
     @OneToMany
     private Set<CommentForAdvert> commentForAdvertSet;

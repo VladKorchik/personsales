@@ -1,6 +1,7 @@
-package com.senla.kaluga.PersonsSales.model.rating;
+package com.senla.kaluga.PersonsSales.model.sellerrating;
 
 import com.senla.kaluga.PersonsSales.model.seller.Seller;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,8 +15,9 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
-public class Rating {
+public class SellerRating {
     @Id
     @GeneratedValue
     private int id;

@@ -1,9 +1,9 @@
 package com.senla.kaluga.PersonsSales.model.seller;
 
 import com.senla.kaluga.PersonsSales.model.chat.Chat;
-import com.senla.kaluga.PersonsSales.model.rating.Rating;
-import com.senla.kaluga.PersonsSales.model.message.Message;
+import com.senla.kaluga.PersonsSales.model.sellerrating.SellerRating;
 import com.senla.kaluga.PersonsSales.model.advert.Advert;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +21,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
 public class Seller implements UserDetails {
 
@@ -35,7 +36,7 @@ public class Seller implements UserDetails {
     @Size(min = 2, max = 100, message = "Фамилия должна состоять минимум из двух символов.")
     private String lastName;
     @OneToMany
-    private Set<Rating> commentsAndRating;
+    private Set<SellerRating> commentsAndRating;
     private String email;
     @CreationTimestamp
     private Timestamp registrationDate;

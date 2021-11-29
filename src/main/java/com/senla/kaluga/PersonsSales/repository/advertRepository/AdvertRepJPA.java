@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AdvertRepJPA extends JpaRepository<Advert, String> {
+public interface AdvertRepJPA extends JpaRepository<Advert, Integer> {
 
     //todo
 
@@ -15,7 +15,7 @@ public interface AdvertRepJPA extends JpaRepository<Advert, String> {
     // Вернуть все объявления: Сначала объявления премиум-аккаунтов, потом
     // проплаченные объявления, потом обычные, потом по сортировке рейтинга пользвоателя
 
-    List<Advert> findByIsAdvertActive();
+    List<Advert> findAdvertByIsAdvertActiveIsTrue();
 
     List<Advert> findByAuthorOrderByDate(Seller seller);
 

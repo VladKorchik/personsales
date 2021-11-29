@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface ChatRepJPA extends JpaRepository<Chat, String> {
 
-    List<Chat> findByParticipant(Seller seller);
+    //todo change the method
+    List<Chat> findByEmbeddedIdKeyContains(Seller seller);
 
 
 

@@ -15,7 +15,7 @@ public class ChatRepository {
     private EntityManager entityManager;
 
     public List<Chat> getMyChats(Seller seller){
-        return chatRepJPA.findByParticipant(seller);
+        return chatRepJPA.findByEmbeddedIdKeyContains(seller);
     }
 
 }
